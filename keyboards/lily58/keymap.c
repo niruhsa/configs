@@ -22,9 +22,7 @@ static long int oled_timeout = 600000; // 10 minutes
 
 enum layer_number {
   _QWERTY = 0,
-  _COLEMAN,
   _UTIL,
-  _LEAGUE,
 };
 
 /* THIS FILE WAS GENERATED!
@@ -34,15 +32,13 @@ enum layer_number {
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY] = LAYOUT(KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_BSPC, KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_SCLN, KC_LSFT, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_MINS, KC_QUOT, KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LBRC, KC_RBRC, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, TG(0), KC_LALT, KC_LGUI, KC_SPC, KC_ENT, TG(1), TG(2), TG(3)),
-    [_COLEMAN] = LAYOUT(KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_GRV, KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, KC_MINS, KC_SCLN, KC_LSFT, KC_A, KC_R, KC_S, KC_T, KC_G, KC_K, KC_N, KC_E, KC_I, KC_O, KC_QUOT, KC_LCTL, KC_Z, KC_X, KC_C, KC_D, KC_V, KC_LBRC, KC_RBRC, KC_M, KC_H, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, TG(0), KC_LALT, KC_LGUI, KC_SPC, KC_ENT, KC_BSPC, TG(1), TG(2)),
-    [_UTIL] = LAYOUT(KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_BSPC, KC_TAB, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO, KC_NO, KC_I, KC_NO, KC_F11, KC_F12, KC_PGUP, KC_LSFT, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_J, KC_K, KC_L, KC_NO, KC_UP, KC_PGDN, KC_LCTL, KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLU, KC_SLEP, KC_COPY, KC_PSTE, KC_FIND, KC_LEFT, KC_DOWN, KC_RGHT, TG(0), KC_LALT, KC_LGUI, KC_VOLD, KC_ENT, TG(1), TG(2), TG(3)),
-    [_LEAGUE] = LAYOUT(KC_ESC, KC_1, KC_2, KC_3, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_BSPC, KC_TAB, KC_4, KC_5, KC_6, KC_T, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_LSFT, KC_Q, KC_W, KC_E, KC_R, KC_D, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_F, KC_P, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(0), KC_LCTL, KC_LSFT, KC_SPC, KC_ENT, TG(1), TG(2), TG(3))
+    [_QWERTY] = LAYOUT(KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_BSPC, KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_SCLN, KC_LSFT, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_QUOT, KC_EQL, KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LBRC, KC_RBRC, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS, MO(1), KC_LALT, KC_LGUI, KC_SPC, KC_ENT, MO(1), KC_BSLS, KC_GRV),
+    [_UTIL] = LAYOUT(KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_BSPC, KC_TAB, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO, KC_INS, KC_DEL, KC_K, KC_F11, KC_F12, KC_PGUP, KC_LSFT, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO, KC_H, KC_J, KC_L, KC_UP, KC_PGDN, KC_LCTL, KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLU, KC_SLEP, KC_COPY, KC_PSTE, KC_FIND, KC_LEFT, KC_DOWN, KC_RGHT, MO(1), KC_LALT, KC_LGUI, KC_VOLD, KC_ENT, MO(1), KC_HOME, KC_END)
 };
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _COLEMAN, _UTIL, _LEAGUE);
-}
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//   return update_tri_layer_state(state, _UTIL);
+// }
 
 // bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //  if (record->event.pressed) {
@@ -85,15 +81,8 @@ static void render_status(void) {
     oled_write_P(PSTR("\n      LAYER "), false);
 
     switch (get_highest_layer(layer_state)) {
-        case 3:
-            oled_write_P(PSTR("LEAGUE "), false);
-            break;
-        case 2:
-            oled_write_P(PSTR("UTIL  "), false);
-            break;
-	// Layer 1
         case 1:
-            oled_write_P(PSTR("COLEMAN "), false);
+            oled_write_P(PSTR("UTIL   "), false);
             break;
         // Layer 0
         default:
